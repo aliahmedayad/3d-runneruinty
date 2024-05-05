@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
         VerticalInput = Input.GetAxis("Vertical");
         float playerheight =GetComponent<Collider>().bounds.size.y;
         bool Isground = Physics.Raycast(transform.position, Vector3.down, (playerheight / 2) + 0.1f, GroundMask);
-        if (Input.GetKeyDown(KeyCode.Space)&&Isalive==true&&Isground==true) {
+        if (Input.GetKeyDown(KeyCode.Space)&&Isalive==true) {
+            Console.WriteLine("here");
             jump();
 
         }
