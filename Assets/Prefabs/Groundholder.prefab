@@ -107,6 +107,7 @@ MonoBehaviour:
   obstprefab:
   - {fileID: 1160782472023190091, guid: 8604571f78b5cdc408d6a4118bfc8b27, type: 3}
   - {fileID: 8383792081642824099, guid: 85c8dba79e0ace64085c0682c7b8c375, type: 3}
+  coins: {fileID: 1818698775183064804, guid: 35c194b7c8cae954bac72b1574fcbee1, type: 3}
   spaawnpoints:
   - {fileID: 154398325273454232}
   - {fileID: 9060476630649769076}

@@ -7,6 +7,7 @@ public class Groundtile : MonoBehaviour
     // Start is called before the first frame update
     private Groundspawner spawner;
     public GameObject[] obstprefab;
+    public GameObject coins;
     public Transform[] spaawnpoints;
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class Groundtile : MonoBehaviour
     void Start()
     {
         spawnobs();
+        spawnCoin();
     }
     private void OnTriggerExit(Collider other)
     {
@@ -31,5 +33,19 @@ public class Groundtile : MonoBehaviour
         int choosespawnpoint = Random.Range(0, spaawnpoints.Length); 
         int spawnrpefab=Random.Range(0,obstprefab.Length);
         Instantiate(obstprefab[spawnrpefab], spaawnpoints[choosespawnpoint].transform.position, Quaternion.identity, transform);
+    }
+    public void spawnCoin()
+    {
+        int spawnamount = 2;
+        for(int i = 0;i< spawnamount; i++) {
+            GameObject temp = Instantiate(coins);
+            temp.transform.position = spawnRnd(GetComponent<Collider>());
+        }
+    }
+    Vector3 spawnRnd(Collider coll)
+    {
+        Vector3 pnt = new Vector3(Random.Range(coll.bounds.min.x, coll.bounds.max.x), Random.Range(coll.bounds.min.y, coll.bounds.max.y), Random.Range(coll.bounds.min.z, coll.bounds.max.z));
+        pnt.y = 1;
+        return pnt;
     }
 }

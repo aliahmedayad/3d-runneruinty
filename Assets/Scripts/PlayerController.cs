@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     float HorizontalInput;
     public float VerticalInput;
-    [SerializeField] private float jumpforce = 350;
+    public float IncreaseSpeed;
+    [SerializeField] private float jumpforce = 100;
     [SerializeField] private LayerMask GroundMask;
     private void Awake()
     {
@@ -46,5 +49,28 @@ public class PlayerController : MonoBehaviour
     public void jump()
     {
         rb.AddForce(Vector3.up * jumpforce);
+        SoundManager.playSound("Jump");
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "graphic")
+        {
+            SoundManager.playSound("Over");
+            Dead();
+            Debug.Log("lol");
+
+        }
+        if (collision.gameObject.name == "coin(Clone)")
+        {
+            SoundManager.playSound("Coin");
+            Destroy(collision.gameObject);
+            GameManager.Instance.score++;
+            Runspeed += IncreaseSpeed;
+        }
+    }
+    private void Dead()
+    {
+        Isalive=false;
+        GameManager.Instance.gameOver.SetActive(true);
     }
 }
