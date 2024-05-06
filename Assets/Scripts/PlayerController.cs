@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpforce = 100;
     [SerializeField] private LayerMask GroundMask;
     private float startYPosition;
-
+    bool isJumping = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,26 +40,30 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    
+
     void Update()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
         VerticalInput = Input.GetAxis("Vertical");
         float playerheight = GetComponent<Collider>().bounds.size.y;
-        bool Isground = Physics.Raycast(transform.position, Vector3.down, (playerheight / 2) + 0.1f, GroundMask);
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (playerheight / 2) + 0.1f, GroundMask);
 
         // If the player is not on the ground and is alive, and the Y position has decreased significantly from the start
-        if (!Isground && Isalive && transform.position.y < startYPosition )
+        if (!isGrounded && Isalive && transform.position.y < startYPosition)
         {
-            SoundManager.stopSound();
-            SoundManager.playSound("Over");
+            /*SoundManager.stopSound();
+            SoundManager.playSound("Over");*/
             Dead();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Isalive && Isground)
+        if (Input.GetKeyDown(KeyCode.Space) && Isalive && isGrounded && !isJumping)
         {
             jump();
+            isJumping = true;
         }
     }
+
 
     public void jump()
     {
@@ -69,11 +73,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
+            isJumping = false;
+        
+
         if (collision.gameObject.name == "graphic" || collision.gameObject.name == "Enemy" || collision.gameObject.tag == "obs")
         {
-            SoundManager.stopSound();
-            SoundManager.playSound("Over");
+            /*SoundManager.stopSound();
+            SoundManager.playSound("Over");*/
+           
             Dead();
+
         }
         if (collision.gameObject.name == "coin(Clone)")
         {
@@ -87,7 +97,8 @@ public class PlayerController : MonoBehaviour
     private void Dead()
     {
         Isalive = false;
-        
+        SoundManager.stopSound(); // Stop the normal sound
+        SoundManager.playSound("Over"); // Play the game over sound
         PlayerController.Destroy(this);
         GameManager.Instance.gameOver.SetActive(true);
     }

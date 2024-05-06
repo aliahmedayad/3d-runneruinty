@@ -10,12 +10,16 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        JumpSound=jump;
-        coinSound=coin;
-        GameoverSound= game_over;
-        normalSound= normal_sound;
+        
 
+    }
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        JumpSound = jump;
+        coinSound = coin;
+        GameoverSound = game_over;
+        normalSound = normal_sound;
     }
 
     // Update is called once per frame

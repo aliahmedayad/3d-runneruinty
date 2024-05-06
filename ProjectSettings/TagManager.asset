@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Undefined
   - obs
+  - Ground
   layers:
   - Default
   - TransparentFX
