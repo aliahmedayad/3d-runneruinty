@@ -982,7 +982,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5471698, g: 0.4060111, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Try Again
+  m_text: 'Home
 
 '
   m_isRightToLeft: 0
@@ -2260,6 +2260,7 @@ MonoBehaviour:
   coin: {fileID: 8300000, guid: 9c6d8ff1665a82945b3e4d8c7bbd6a21, type: 3}
   jump: {fileID: 8300000, guid: 2f0dc71824ea7d94284f54bf57a8878d, type: 3}
   game_over: {fileID: 8300000, guid: fb900add61808d4458b2e79bc62a6e9d, type: 3}
+  normal_sound: {fileID: 8300000, guid: bd36109aac912eb468e57e6a00cce7f3, type: 3}
 --- !u!82 &1451199641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2567,7 +2568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1643689177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3336,7 +3337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.56
+      value: -15.06
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3547,7 +3548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.89
+      value: 12.28
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cc767c10d36eaa748aaa5b008bf78528, type: 3}
       propertyPath: m_LocalPosition.y
