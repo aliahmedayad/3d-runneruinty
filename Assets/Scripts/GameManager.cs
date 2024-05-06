@@ -33,10 +33,12 @@ public class GameManager : MonoBehaviour
     public void startGame()
     {
         gameStart.SetActive(false);
+        SoundManager.playSound("Normal");
         Time.timeScale = 1;
     }
     public void resetLevel()
     {
+   
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

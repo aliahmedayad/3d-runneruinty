@@ -16,6 +16,7 @@ public class Groundtile : MonoBehaviour
     void Start()
     {
         spawnobs();
+      
         
         spawnCoin();
     }

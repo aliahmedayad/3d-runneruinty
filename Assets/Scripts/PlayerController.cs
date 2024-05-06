@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
         // If the player is not on the ground and is alive, and the Y position has decreased significantly from the start
         if (!Isground && Isalive && transform.position.y < startYPosition )
         {
+            SoundManager.stopSound();
+            SoundManager.playSound("Over");
             Dead();
         }
 
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name == "graphic" || collision.gameObject.name == "Enemy" || collision.gameObject.tag == "obs")
         {
+            SoundManager.stopSound();
             SoundManager.playSound("Over");
             Dead();
         }
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
     private void Dead()
     {
         Isalive = false;
+        
         PlayerController.Destroy(this);
         GameManager.Instance.gameOver.SetActive(true);
     }
