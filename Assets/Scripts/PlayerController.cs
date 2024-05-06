@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
     private void Dead()
     {
         Isalive = false;
+        PlayerController.Destroy(this);
         GameManager.Instance.gameOver.SetActive(true);
     }
 }

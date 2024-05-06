@@ -16,6 +16,7 @@ public class Groundtile : MonoBehaviour
     void Start()
     {
         spawnobs();
+        
         spawnCoin();
     }
     private void OnTriggerExit(Collider other)
@@ -30,9 +31,28 @@ public class Groundtile : MonoBehaviour
     }
     public void spawnobs()
     {
-        int choosespawnpoint = Random.Range(0, spaawnpoints.Length); 
-        int spawnrpefab=Random.Range(0,obstprefab.Length);
-        Instantiate(obstprefab[spawnrpefab], spaawnpoints[choosespawnpoint].transform.position, Quaternion.identity, transform);
+        int choosespawnpoint = Random.Range(0, spaawnpoints.Length);
+        int spawnrpefab = Random.Range(0, obstprefab.Length);
+        Vector3 spawnPosition = spaawnpoints[choosespawnpoint].transform.position;
+       
+        if (spawnrpefab == 2)
+        {
+            Quaternion spawnRotation = Quaternion.Euler(0f,180f, 0f); // Rotate 180 degrees around y-axis
+            Instantiate(obstprefab[spawnrpefab], spawnPosition, spawnRotation, transform);
+        }
+        else if (spawnrpefab == 3)
+        {
+
+            Quaternion spawnRotation = Quaternion.Euler(0f, 90f, 0f); // Rotate 180 degrees around y-axis
+            Instantiate(obstprefab[spawnrpefab], spawnPosition, spawnRotation, transform);
+        }
+        else
+        {
+            Instantiate(obstprefab[spawnrpefab], spaawnpoints[choosespawnpoint].transform.position, Quaternion.identity, transform);
+        }
+       
+
+
     }
     public void spawnCoin()
     {
